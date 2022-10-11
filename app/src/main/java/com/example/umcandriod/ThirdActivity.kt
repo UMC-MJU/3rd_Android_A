@@ -38,5 +38,10 @@ class ThirdActivity : AppCompatActivity() {
                 .replace(viewBinding.frameFragment.id, FragmentSecond())
                 .commitAllowingStateLoss()
         }
+
+        supportFragmentManager
+            .setFragmentResultListener("requestKey", this) {requestKey, bundle ->
+                val result = bundle.getString("bundleKey")
+            }
     }
 }

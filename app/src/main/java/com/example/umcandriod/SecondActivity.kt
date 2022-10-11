@@ -24,5 +24,13 @@ class SecondActivity : AppCompatActivity() {
             val intent = Intent(this, ThirdActivity::class.java)
             startActivity(intent)
         }
+
+        viewBinding.btnBack.setOnClickListener{
+            val intent = Intent(this@SecondActivity, MainActivity::class.java)
+            intent.putExtra("test", "Back")
+            setResult(RESULT_OK, intent)
+            finish()
+        }
+
     }
 }
