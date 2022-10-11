@@ -1,5 +1,6 @@
 package com.example.umcandriod
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.umcandriod.databinding.ActivityMainBinding
@@ -15,9 +16,13 @@ class SecondActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         // 넘어온 정보를 받는다
-//        val intentExtras = intent.extras
-//        val data = intentExtras!!["text"] as String // 형변환(as) !!(not null인 것이 확실할 때)
-//
-//        viewBinding.tvSecondText.text = data
+        val intentExtras = intent.extras
+        val data = intentExtras!!["text"] as String // 형변환(as) !!(not null인 것이 확실할 때)
+        viewBinding.tvSecondText.text = data
+
+        viewBinding.secondBtn.setOnClickListener{
+            val intent = Intent(this, ThirdActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
