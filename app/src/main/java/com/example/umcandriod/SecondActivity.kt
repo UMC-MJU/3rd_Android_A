@@ -29,7 +29,7 @@ class SecondActivity : AppCompatActivity() {
             val intent = Intent(this@SecondActivity, MainActivity::class.java)
             intent.putExtra("test", "Back")
             setResult(RESULT_OK, intent)
-            finish()
+            finish() // 이전 액티비티를 종료하고자 하는 경우
         }
 
     }
