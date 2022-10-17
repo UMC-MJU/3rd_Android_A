@@ -1,5 +1,6 @@
 package com.example.week4_umc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.week4_umc.databinding.ActivityMainBinding
@@ -15,6 +16,10 @@ class SecondActivity : AppCompatActivity() {
         val view = viewBinding.root
         setContentView(view)
 
-        viewBinding.txtSecond.text= intent.getStringExtra("data")
+        viewBinding.secondBtn.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java);
+            intent.putExtra("data", viewBinding.editText.text.toString())
+            startActivity(intent)
+        }
     }
 }

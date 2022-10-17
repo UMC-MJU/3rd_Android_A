@@ -15,11 +15,11 @@ class MainActivity : AppCompatActivity() {
         val view = viewBinding.root
         setContentView(view)
 
-        viewBinding.btnMain.setOnClickListener{
-            var intent = Intent(this, SecondActivity::class.java)
-            // 명시적 인텐트, 클래스 명을 사용해서 정확하게 intent 해줬기 때문에
-            intent.putExtra("data", viewBinding.editMain.text.toString())
+        viewBinding.mainPlusBtn.setOnClickListener{
+            val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }
+
+        viewBinding.firstMemo.text= intent.getStringExtra("data")
     }
 }
