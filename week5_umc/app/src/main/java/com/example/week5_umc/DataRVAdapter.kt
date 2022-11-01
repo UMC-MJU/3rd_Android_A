@@ -18,6 +18,11 @@ class DataRVAdapter (private val dataList:ArrayList<Data>): RecyclerView.Adapter
         fun bind(data: Data){
             viewBinding.tvTitle.text = data.title
             viewBinding.tvDesc.text = data.desc
+
+            viewBinding.switch1.isChecked = data.isChecked
+            viewBinding.switch1.setOnClickListener {
+                data.isChecked = viewBinding.switch1.isChecked
+            }
         }
     }
 
