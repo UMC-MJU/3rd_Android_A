@@ -22,7 +22,7 @@
             android:id="@+id/btn_memo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="recycler view 이동"
+            android:text="메모장 이동"
             android:backgroundTint="@color/white"
             android:textColor="@color/black"
             android:layout_marginLeft="20dp"/>

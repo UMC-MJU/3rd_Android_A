@@ -1,14 +1,21 @@
 package com.example.week5_umc
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
+import android.view.View
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.week5_umc.databinding.ActivityMemoBinding
 
 class MemoActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMemoBinding
+    lateinit var getResultText: ActivityResultLauncher<Intent>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMemoBinding.inflate(layoutInflater)
@@ -19,9 +26,22 @@ class MemoActivity : AppCompatActivity() {
 
         binding.memoRV.adapter = dataRVAdapter // adapter
         binding.memoRV.layoutManager = LinearLayoutManager(this)// layoutManager
-        // context: 어플리케이션 정보가 들어가있음.
 
-        // 데이터를 추가했을 때 recycler view 에 알려주어야 함.
+        getResultText = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()){result ->
+            if(result.resultCode == RESULT_OK){
+                dataList.add(Data(result.data?.getStringExtra("title").toString(), result.data?.getStringExtra("des").toString()))
+                dataRVAdapter.notifyItemInserted(dataRVAdapter.itemCount)
+            }
+        }
+
+        binding.memoAddBtn.setOnClickListener{
+            val intent = Intent(this, MemoDesActivity::class.java)
+            getResultText.launch(intent)
+        }
+
+
+
 
 //        Handler(mainLooper).postDelayed({
 //            dataList.apply {
