@@ -38,8 +38,13 @@ class MainActivity : AppCompatActivity() {
         binding.listView.adapter = customAdapter
 
         // RV로 이동하기
-        binding.btnChange.setOnClickListener{
+        binding.btnRv.setOnClickListener{
             val intent = Intent(this, RVActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnMemo.setOnClickListener{
+            val intent = Intent(this, MemoActivity::class.java)
             startActivity(intent)
         }
     }
