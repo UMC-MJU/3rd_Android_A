@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             businessCardArrayList.add(BusinessCard("담", "하이"))
         }
 
+        
         customAdapter = CustomAdapter(this, businessCardArrayList)
         // 리스트 뷰에 어댑터 넣어주기
         binding.listView.adapter = customAdapter
