@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.CompoundButton
 import com.example.week5_umc.databinding.ActivityListViewBinding
 
 class CustomAdapter(context: Context, private val businessCardArrayList: ArrayList<BusinessCard>):BaseAdapter(){
@@ -27,7 +28,10 @@ class CustomAdapter(context: Context, private val businessCardArrayList: ArrayLi
         // 스크롤이 되거나 최초 시점에 순서에 맞게 데이터를 넣어준다.
         binding.nameListviewItem.text = businessCardArrayList[p0].name
         binding.contentsListviewItem.text = businessCardArrayList[p0].contents
-
+        binding.switchBtn.isChecked = businessCardArrayList[p0].isSwitched
+        binding.switchBtn.setOnCheckedChangeListener(){
+            CompoundButton, onSwitch -> businessCardArrayList[p0].isSwitched = onSwitch
+        }
         return binding.root
     }
 }

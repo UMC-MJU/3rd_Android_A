@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.example.week5_umc.databinding.ActivityListViewBinding
 import com.example.week5_umc.databinding.ActivityMainBinding
 
-data class BusinessCard(val name:String, val contents: String)
+data class BusinessCard(val name:String, val contents: String, var isSwitched: Boolean = false)
 
 class MainActivity : AppCompatActivity() {
 
