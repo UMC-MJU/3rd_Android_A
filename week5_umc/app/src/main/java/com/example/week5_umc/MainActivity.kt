@@ -1,11 +1,13 @@
 package com.example.week5_umc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.week5_umc.databinding.ActivityListViewBinding
 import com.example.week5_umc.databinding.ActivityMainBinding
+import com.example.week5_umc.databinding.ActivityRvactivityBinding
 
-data class BusinessCard(val name:String, val contents: String)
+data class BusinessCard(val name:String, val contents: String, var isSwitched: Boolean = false)
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,5 +37,15 @@ class MainActivity : AppCompatActivity() {
         // 리스트 뷰에 어댑터 넣어주기
         binding.listView.adapter = customAdapter
 
+        // RV로 이동하기
+        binding.btnRv.setOnClickListener{
+            val intent = Intent(this, RVActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnMemo.setOnClickListener{
+            val intent = Intent(this, MemoActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
