@@ -22,7 +22,9 @@ class MemoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val dataList: ArrayList<Data> = arrayListOf()
-        val dataRVAdapter = DataRVAdapter(dataList)
+        val dataRVAdapter = DataRVAdapterForMemo(dataList)
+
+
 
         binding.memoRV.adapter = dataRVAdapter // adapter
         binding.memoRV.layoutManager = LinearLayoutManager(this)// layoutManager
@@ -39,21 +41,5 @@ class MemoActivity : AppCompatActivity() {
             val intent = Intent(this, MemoDesActivity::class.java)
             getResultText.launch(intent)
         }
-
-
-
-
-//        Handler(mainLooper).postDelayed({
-//            dataList.apply {
-//                add(Data("hello", "7"))
-//                add(Data("hello", "8"))
-//                add(Data("hello", "9"))
-//                add(Data("hello", "10"))
-//            }
-////            dataRVAdapter.notifyDataSetChanged() // 데이터 셋이 추가 되었음.
-//            // dataSetChanged()를 사용하지 않는 이유는 기존에 있는 recycler view 의 정보들을 모두 다 가져와야 한다. 완전히 새로고침할 때 사용한다.
-//            dataRVAdapter.notifyItemRangeInserted(11, 1)
-//
-//        }, 1000)
     }
 }
