@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">week6_umc</string>
+    <string name="menu_setting">설정</string>
+    <string name="menu_home">홈</string>
+    <string name="menu_search">검색</string>
+    <string name="menu_search_one">검색 첫번째 ViewPager</string>
+    <string name="menu_search_two">검색 두번째 ViewPager</string>
+    <string name="menu_search_three">검색 세번째 ViewPager</string>
+    <string name="tab_one">첫 번째 tab</string>
+    <string name="tab_two">두 번재 tab</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
