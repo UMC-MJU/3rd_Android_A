@@ -16,7 +16,7 @@ class TabActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         val tabVPAdapter = TabVPAdapter(this)
-        viewBinding.vpMain.adapter = tabVPAdapter // vp main 에는 dapter를 사용할 예정이다.
+        viewBinding.vpMain.adapter = tabVPAdapter // vp main 에는 adapter를 사용할 예정이다.
 
         val tabTitleArray = arrayOf(
             "One",

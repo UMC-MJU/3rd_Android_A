@@ -6,40 +6,46 @@ import com.example.week6_umc.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewBinding : ActivityMainBinding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
-    }
+    private lateinit var viewBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        // 기본은 homeFragment
-        supportFragmentManager
-            .beginTransaction()
-            .replace(viewBinding.containerFragment.id, HomeFragment())
-            .commitAllowingStateLoss()
+        viewBinding = ActivityMainBinding.inflate(layoutInflater)
+        val view = viewBinding.root
+        setContentView(view)
 
         viewBinding.navigationBottom.run {
             setOnItemSelectedListener {
-                when(it.itemId){ // 가장 고유한 값은 id 임.
-                    R.id.menu_home ->{ // homeFragment로 이동
+                when(it.itemId){
+                    R.id.menu_home ->{
                         supportFragmentManager
                             .beginTransaction()
                             .replace(viewBinding.containerFragment.id, HomeFragment())
                             .commitAllowingStateLoss()
                     }
-                    R.id.menu_setting ->{ // settingFragment로 이동
+                    R.id.menu_search ->{
+                        supportFragmentManager
+                            .beginTransaction()
+                            .replace(viewBinding.containerFragment.id, SearchFragment())
+                            .commitAllowingStateLoss()
+                    }
+                    R.id.menu_setting ->{
                         supportFragmentManager
                             .beginTransaction()
                             .replace(viewBinding.containerFragment.id, SettingFragment())
                             .commitAllowingStateLoss()
                     }
                 }
-                true // return boolean type
+                true
             }
 
-            // 초기에 값을 세팅해준다. run 안 setOnItemSelected 밖에 포함이 되어 있다.
+
+            supportFragmentManager
+                .beginTransaction()
+                .replace(viewBinding.containerFragment.id, HomeFragment())
+                .commitAllowingStateLoss()
+
             selectedItemId = R.id.menu_home
         }
     }
