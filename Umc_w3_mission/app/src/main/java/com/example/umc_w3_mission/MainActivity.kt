@@ -23,13 +23,10 @@ class MainActivity : AppCompatActivity() {
             var age = viewBinding.editText.text
             val intent = Intent(this, SecondActivity::class.java)
             intent.putExtra("number", age)
-            startActivity(intent)
             getResultText.launch(intent)
         }
 
 
-
-        //
         getResultText = registerForActivityResult (
             ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
