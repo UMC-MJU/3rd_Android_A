@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ThirdActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -24,14 +24,18 @@
         android:orientation="vertical"
         android:layout_margin="10dp">
 
-        <ImageButton
-            android:id="@+id/btnAdd"
+        <Button
+            android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:background="@android:color/transparent"
-            android:padding="12dp"
-            app:srcCompat="@drawable/add" />
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_gravity="left"
+            android:text="이전"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:background="@android:color/transparent" />
 
         <View
             android:id="@+id/divider"
@@ -39,22 +43,17 @@
             android:layout_height="1dp"
             android:background="?android:attr/listDivider" />
 
-        <LinearLayout
-            android:id="@+id/layout_memolist"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_margin="15dp"
-            android:background="#F3F4F4" >
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_data"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
-
-        </LinearLayout>
+            android:layout_marginTop="15dp"
+            android:lines="20"
+            android:text=""
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            />
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
