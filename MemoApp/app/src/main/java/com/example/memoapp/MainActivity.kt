@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+        // RecyclerView에 item 사이에 divider(구분선) 추가
+        val rv = viewBinding.rvData
+        val divider = DividerItemDecoration(this, viewBinding.layoutMemolist.orientation)
+        rv.addItemDecoration(divider)
 
         val dataList: ArrayList<Data> = arrayListOf()
         dataList.apply {
