@@ -31,30 +31,18 @@ class MainActivity : AppCompatActivity() {
 
         val dataList: ArrayList<Data> = arrayListOf()
         dataList.apply {
-            add(Data("일"))
-            add(Data("이"))
-            add(Data("삼"))
-            add(Data("사"))
-            add(Data("오ㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗ"))
-            add(Data("육"))
-            add(Data("칠"))
-            add(Data("팔8938498493"))
-            add(Data("일"))
-            add(Data("이"))
-            add(Data("삼"))
-            add(Data("사"))
-            add(Data("오ㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗ"))
-            add(Data("육"))
-            add(Data("칠"))
-            add(Data("팔8938498493"))
-            add(Data("일"))
-            add(Data("이"))
-            add(Data("삼"))
-            add(Data("사"))
-            add(Data("오ㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗ"))
-            add(Data("육"))
-            add(Data("칠"))
-            add(Data("팔8938498493"))
+            add(Data("해야 할 일"))
+            add(Data("살 것"))
+            add(Data("으아아아 힘들다"))
+            add(Data("안드로이드 공부 꾸준히 하기"))
+            add(Data("갓생 살자^^"))
+            add(Data("오"))
+            add(Data("아이언맨 보고싶다잉"))
+            add(Data("삼겹살 먹고싶다"))
+            add(Data("바닐라라떼 버블티"))
+            add(Data("o_<"))
+            add(Data("ABCDEFG"))
+            add(Data("교수님 수업 빨리 끝내주세요...과제 싫어요..."))
         }
         val dataRVAdapter = DataRVAdapter(dataList)
         viewBinding.rvData.adapter = dataRVAdapter
@@ -83,13 +71,13 @@ class MainActivity : AppCompatActivity() {
         })
         getResultText = registerForActivityResult (
             ActivityResultContracts.StartActivityForResult()) { result ->
-                // resultCode: ToActivity(여기선 MainActivity)로 intent를 보내는 FromActiviy Number
-                // requestCode/resultCode로 Activity Result 처리
+                // resultCode: ToActivity(여기선 MainActivity)로 intent를 보내는 **FromActiviy Number**
+                // requestCode/resultCode로 구분해 다수의 Activity Result 처리 가능
                 if (result.resultCode == 3) {
                     // 수정
                     val intent = result.data
                     val memo = intent!!.getStringExtra("completed_item")
-                    dataList.set(dataRVAdapter.getSelectedPosition(), Data(memo.toString()))
+                    dataList[dataRVAdapter.getSelectedPosition()] = Data(memo.toString())
                     dataRVAdapter.notifyItemChanged(dataRVAdapter.getSelectedPosition())
                 }
                 else if(result.resultCode == 2) {
