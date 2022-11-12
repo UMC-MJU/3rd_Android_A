@@ -1,16 +1,23 @@
 package com.example.memoapp
 
 import android.content.Intent
+import android.media.AudioAttributes
+import android.media.AudioManager
+import android.media.SoundPool
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.memoapp.databinding.ActivityThirdBinding
+import kotlin.properties.Delegates
 
 class ThirdActivity : AppCompatActivity() {
     private lateinit var viewBinding : ActivityThirdBinding
     private lateinit var getResultText: ActivityResultLauncher<Intent>
+    private var soundPool: SoundPool? = null
+    private var soundId by Delegates.notNull<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +45,12 @@ class ThirdActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        soundPoolInit()
+        soundId = soundPool?.load(this, R.raw.success_sound, 1)!!
+    }
+
     override fun onResume() {
         super.onResume()
         viewBinding.textView.setOnClickListener {
@@ -48,11 +61,13 @@ class ThirdActivity : AppCompatActivity() {
         viewBinding.btnBack.setOnClickListener {
             sendMemoToMain()
             finish()
+            soundPool!!.play(soundId, 1f, 1f, 0, 0, 1f)
         }
     }
 
     override fun onStop() {
         super.onStop()
+        soundPoolRelease()
         // 지금까지 작성(저장)된 메모 MainActivity result로 설정
         sendMemoToMain()
     }
@@ -61,5 +76,24 @@ class ThirdActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("completed_item", viewBinding.textView.text)
         setResult(3, intent)
+    }
+
+    // 효과음 재생을 위한 SoundPool Method
+    private fun soundPoolInit() {
+        if (soundPool == null) {
+            soundPool = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                val audioAttributes = AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .build()
+                SoundPool.Builder().setAudioAttributes(audioAttributes).setMaxStreams(8).build()
+            } else {
+                SoundPool(8, AudioManager.STREAM_MUSIC, 0)
+            }
+        }
+    }
+    private fun soundPoolRelease() {
+        soundPool!!.release()
+        soundPool = null
     }
 }
