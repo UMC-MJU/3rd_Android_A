@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         dataRVAdapter.setItemClickListener( object : DataRVAdapter.ItemClickListener {
             override fun onClick(view: View, position: Int) {
                 dataRVAdapter.setSelectedPosition(position)
+                Log.d("selectedPostion: ","${dataRVAdapter.getSelectedPosition()}")
                 val intent = Intent(viewBinding.root.context, ThirdActivity::class.java)
                 intent.putExtra("update_item", dataList[position].content)
                 getResultText.launch(intent)
@@ -75,6 +76,7 @@ class MainActivity : AppCompatActivity() {
                 // requestCode/resultCode로 구분해 다수의 Activity Result 처리 가능
                 if (result.resultCode == 3) {
                     // 수정
+                    Log.d("selectedPosition: ","${dataRVAdapter.getSelectedPosition()}")
                     val intent = result.data
                     val memo = intent!!.getStringExtra("completed_item")
                     dataList[dataRVAdapter.getSelectedPosition()] = Data(memo.toString())
