@@ -1,6 +1,10 @@
 package com.example.memoapp
 
 import android.content.Intent
+import android.media.AudioAttributes
+import android.media.AudioManager
+import android.media.SoundPool
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -15,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.memoapp.databinding.ActivityMainBinding
 import com.example.memoapp.databinding.ActivitySecondBinding
+import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
@@ -50,8 +55,9 @@ class MainActivity : AppCompatActivity() {
 
         dataRVAdapter.setItemClickListener( object : DataRVAdapter.ItemClickListener {
             override fun onClick(view: View, position: Int) {
+
                 dataRVAdapter.setSelectedPosition(position)
-                Log.d("selectedPostion: ","${dataRVAdapter.getSelectedPosition()}")
+//                Log.d("setPosition: ","${dataRVAdapter.getSelectedPosition()}")
                 val intent = Intent(viewBinding.root.context, ThirdActivity::class.java)
                 intent.putExtra("update_item", dataList[position].content)
                 getResultText.launch(intent)
@@ -76,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                 // requestCode/resultCode로 구분해 다수의 Activity Result 처리 가능
                 if (result.resultCode == 3) {
                     // 수정
-                    Log.d("selectedPosition: ","${dataRVAdapter.getSelectedPosition()}")
+//                    Log.d("getPosition: ","${dataRVAdapter.getSelectedPosition()}")
                     val intent = result.data
                     val memo = intent!!.getStringExtra("completed_item")
                     dataList[dataRVAdapter.getSelectedPosition()] = Data(memo.toString())
@@ -88,7 +94,7 @@ class MainActivity : AppCompatActivity() {
                     val memo = intent!!.getStringExtra("add_item")
                     dataList.add(Data(memo.toString()))
                     dataRVAdapter.notifyItemInserted(dataRVAdapter.itemCount)
-            }
+                }
         }
     }
 
