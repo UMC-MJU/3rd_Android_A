@@ -25,11 +25,14 @@ class SecondActivity : AppCompatActivity() {
         super.onResume()
 
         viewBinding.btnBack.setOnClickListener {
-            // 이거 무조건 첫번째 액티비티로 가게 하고 싶다
             AlertDialog.Builder(this)
                 .setTitle("현재 내용이 저장되지 않았습니다.")
                 .setMessage("뒤로 가시겠습니까?")
-                .setPositiveButton("네") { dialog, which -> super.onBackPressed() }
+                .setPositiveButton("네") { dialog, which ->
+                    // ThirdActivity로 보낼 intent 없으므로 RESULT_CANCELED 보내기
+                    setResult(RESULT_CANCELED)
+                    super.onBackPressed()
+                }
                 .setNegativeButton("아니오") { dialog, which -> }
                 .create()
                 .show()
