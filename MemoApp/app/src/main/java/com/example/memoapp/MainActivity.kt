@@ -1,25 +1,17 @@
 package com.example.memoapp
 
 import android.content.Intent
-import android.media.AudioAttributes
-import android.media.AudioManager
-import android.media.SoundPool
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.memoapp.databinding.ActivityMainBinding
-import com.example.memoapp.databinding.ActivitySecondBinding
-import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
@@ -36,18 +28,24 @@ class MainActivity : AppCompatActivity() {
 
         val dataList: ArrayList<Data> = arrayListOf()
         dataList.apply {
-            add(Data("해야 할 일"))
-            add(Data("살 것"))
-            add(Data("으아아아 힘들다"))
-            add(Data("안드로이드 공부 꾸준히 하기"))
-            add(Data("갓생 살자^^"))
-            add(Data("오"))
-            add(Data("아이언맨 보고싶다잉"))
-            add(Data("삼겹살 먹고싶다"))
-            add(Data("바닐라라떼 버블티"))
-            add(Data("o_<"))
-            add(Data("ABCDEFG"))
-            add(Data("교수님 수업 빨리 끝내주세요...과제 싫어요..."))
+            add(Data("해야 할 일", false))
+            add(Data("살 것", false))
+            add(Data("으아아아 힘들다", false))
+            add(Data("안드로이드 공부 꾸준히 하기", false))
+            add(Data("갓생 살자^^", false))
+            add(Data("오", false))
+            add(Data("아이언맨 보고싶다잉", false))
+            add(Data("삼겹살 먹고싶다", false))
+            add(Data("바닐라라떼 버블티", false))
+            add(Data("o_<", false))
+            add(Data("ABCDEFG", false))
+            add(Data("1", false))
+            add(Data("2", false))
+            add(Data("3", false))
+            add(Data("4", false))
+            add(Data("5", false))
+            add(Data("6", false))
+            add(Data("7", false))
         }
         val dataRVAdapter = DataRVAdapter(dataList)
         viewBinding.rvData.adapter = dataRVAdapter
@@ -62,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("update_item", dataList[position].content)
                 getResultText.launch(intent)
             }
+            @RequiresApi(Build.VERSION_CODES.P)
             override fun onLongClick(view: View, position: Int) {
                 AlertDialog.Builder(viewBinding.root.context)
                     .setMessage("삭제하시겠습니까?")
@@ -85,14 +84,14 @@ class MainActivity : AppCompatActivity() {
 //                    Log.d("getPosition: ","${dataRVAdapter.getSelectedPosition()}")
                     val intent = result.data
                     val memo = intent!!.getStringExtra("completed_item")
-                    dataList[dataRVAdapter.getSelectedPosition()] = Data(memo.toString())
+                    dataList[dataRVAdapter.getSelectedPosition()].content = memo.toString()
                     dataRVAdapter.notifyItemChanged(dataRVAdapter.getSelectedPosition())
                 }
                 else if(result.resultCode == 2) {
                     // 추가
                     val intent = result.data
                     val memo = intent!!.getStringExtra("add_item")
-                    dataList.add(Data(memo.toString()))
+                    dataList.add(Data(memo.toString(), false))
                     dataRVAdapter.notifyItemInserted(dataRVAdapter.itemCount)
                 }
         }
