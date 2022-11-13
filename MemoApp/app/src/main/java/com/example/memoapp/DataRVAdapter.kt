@@ -8,21 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.memoapp.databinding.ItemDataBinding
 
 class DataRVAdapter(private val dataList: ArrayList<Data>): RecyclerView.Adapter<DataRVAdapter.DataViewHolder>() {
-    // Switch의 position에 따른 boolean 저장 array
-    private val switchStatus = SparseBooleanArray()
-
     // ViewHolder 객체
     inner class DataViewHolder(private val viewBinding: ItemDataBinding): RecyclerView.ViewHolder(viewBinding.root){
         fun bind(data: Data) {
             // textView
             viewBinding.tvContent.text = data.content
             // switch
-            viewBinding.swcData.isChecked = switchStatus[adapterPosition]
+            viewBinding.swcData.isChecked = data.isChecked
             viewBinding.swcData.setOnClickListener {
-                if (!viewBinding.swcData.isChecked)
-                    switchStatus.put(adapterPosition, false)
-                else
-                    switchStatus.put(adapterPosition, true)
+                data.isChecked = viewBinding.swcData.isChecked
                 notifyItemChanged(adapterPosition)
             }
         }

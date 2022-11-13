@@ -1,5 +1,6 @@
 package com.example.memoapp
 
 data class Data(
-    val content: String
+    var content: String,
+    var isChecked: Boolean
 )
