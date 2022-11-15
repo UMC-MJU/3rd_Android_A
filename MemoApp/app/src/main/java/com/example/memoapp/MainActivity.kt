@@ -53,7 +53,6 @@ class MainActivity : AppCompatActivity() {
 
         dataRVAdapter.setItemClickListener( object : DataRVAdapter.ItemClickListener {
             override fun onClick(view: View, position: Int) {
-
                 dataRVAdapter.setSelectedPosition(position)
 //                Log.d("setPosition: ","${dataRVAdapter.getSelectedPosition()}")
                 val intent = Intent(viewBinding.root.context, ThirdActivity::class.java)
@@ -77,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         })
         getResultText = registerForActivityResult (
             ActivityResultContracts.StartActivityForResult()) { result ->
-                // resultCode: ToActivity(여기선 MainActivity)로 intent를 보내는 **FromActiviy Number**
+                // resultCode: ToActivity(여기선 MainActivity)로 intent를 보내는 "FromActiviy Number"로 설정
                 // requestCode/resultCode로 구분해 다수의 Activity Result 처리 가능
                 if (result.resultCode == 3) {
                     // 수정
