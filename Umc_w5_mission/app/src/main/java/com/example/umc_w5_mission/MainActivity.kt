@@ -33,16 +33,16 @@ class MainActivity : AppCompatActivity() {
                             .replace(viewBinding.containerFragment.id, NotificationFragment())
                             .commitAllowingStateLoss()
                     }
-                     R.id.menu_setting -> {
+                    R.id.menu_setting -> {
                         supportFragmentManager
                             .beginTransaction()
                             .replace(viewBinding.containerFragment.id, SettingFragment())
                             .commitAllowingStateLoss()
                     }
-                    true
                 }
-                selectedItemId = R.id.menu_home
+                true
             }
+            selectedItemId = R.id.menu_home
         }
 
     }

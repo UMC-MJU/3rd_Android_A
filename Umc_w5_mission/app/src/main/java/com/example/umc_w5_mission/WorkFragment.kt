@@ -1,17 +1,19 @@
 package com.example.umc_w5_mission
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.umc_w5_mission.databinding.FragmentSettingBinding
+import com.example.umc_w5_mission.databinding.FragmentWorkBinding
 
-class SettingFragment : Fragment() {
+class WorkFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return FragmentSettingBinding.inflate(layoutInflater).root
+        return FragmentWorkBinding.inflate(layoutInflater).root
     }
+
 }

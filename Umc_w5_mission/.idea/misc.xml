@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w5_mission/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w5_mission/app/src/main/res/layout/fragment_friend.xml" value="0.1" />
+        <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w5_mission/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w5_mission/app/src/main/res/layout/fragment_message.xml" value="0.1" />
+        <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w5_mission/app/src/main/res/layout/fragment_notification.xml" value="0.21481481481481482" />
+        <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w5_mission/app/src/main/res/layout/fragment_setting.xml" value="0.1" />
+        <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w5_mission/app/src/main/res/layout/fragment_work.xml" value="0.1" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/Umc_w5_mission/app/src/main/res/layout/activity_main.xml" value="0.29030797101449274" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/Umc_w5_mission/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/Umc_w5_mission/app/src/main/res/layout/fragment_notification.xml" value="0.1" />
