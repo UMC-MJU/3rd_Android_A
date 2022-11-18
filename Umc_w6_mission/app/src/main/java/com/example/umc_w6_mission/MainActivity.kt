@@ -2,6 +2,7 @@ package com.example.umc_w6_mission
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.umc_w6_mission.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -28,12 +29,14 @@ class MainActivity : AppCompatActivity() {
                             .commitAllowingStateLoss()
                     }
                     R.id.menu_notification -> {
+                        Log.d("알림: ", "click")
                         supportFragmentManager
                             .beginTransaction()
                             .replace(viewBinding.containerFragment.id, NotificationFragment())
                             .commitAllowingStateLoss()
                     }
                     R.id.menu_setting -> {
+                        Log.d("세팅: ", "click")
                         supportFragmentManager
                             .beginTransaction()
                             .replace(viewBinding.containerFragment.id, SettingFragment())

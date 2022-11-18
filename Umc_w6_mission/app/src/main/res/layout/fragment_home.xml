@@ -23,13 +23,7 @@
             app:layout_constraintBottom_toTopOf="@id/indicator"
             />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_item"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-
-        <me.relex.circleindicator.CircleIndicator2
+        <me.relex.circleindicator.CircleIndicator3
             android:id="@+id/indicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
