@@ -12,7 +12,7 @@
         <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w5_mission/app/src/main/res/layout/fragment_work.xml" value="0.1" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w6_mission/app/src/main/res/layout/activity_main.xml" value="0.27575887131252674" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w6_mission/app/src/main/res/layout/fragment_friend.xml" value="0.27575887131252674" />
-        <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w6_mission/app/src/main/res/layout/fragment_home.xml" value="0.27575887131252674" />
+        <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w6_mission/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w6_mission/app/src/main/res/layout/fragment_message.xml" value="0.27575887131252674" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w6_mission/app/src/main/res/layout/fragment_notification.xml" value="0.27575887131252674" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/Android_A/Umc_w6_mission/app/src/main/res/layout/fragment_setting.xml" value="0.27575887131252674" />
@@ -26,7 +26,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
