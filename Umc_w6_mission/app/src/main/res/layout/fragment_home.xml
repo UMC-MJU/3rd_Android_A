@@ -23,7 +23,17 @@
             app:layout_constraintBottom_toTopOf="@id/indicator"
             />
 
-        <me.relex.circleindicator.CircleIndicator3
+<!--        <me.relex.circleindicator.CircleIndicator3-->
+<!--            android:id="@+id/indicator"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            />-->
+
+        <com.example.umc_w6_mission.CircleIndicator
             android:id="@+id/indicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

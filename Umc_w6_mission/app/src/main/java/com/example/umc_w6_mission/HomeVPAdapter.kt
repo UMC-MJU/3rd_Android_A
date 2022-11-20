@@ -5,7 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_w6_mission.databinding.ItemImageBinding
 
-class ItemRVAdapter (private val itemList: ArrayList<Item>): RecyclerView.Adapter<ItemRVAdapter.ItemViewHolder>() {
+class HomeVPAdapter (private val itemList: ArrayList<Item>): RecyclerView.Adapter<HomeVPAdapter.ItemViewHolder>() {
+    // Indicator 개수를 itemList size로 맞추기 위함
+    private var itemCount : Int = Int.MAX_VALUE
+
     inner class ItemViewHolder(private val viewBinding: ItemImageBinding): RecyclerView.ViewHolder(viewBinding.root){
         fun bind(item: Item) {
             viewBinding.itemIv.setImageResource(item.imageSrc)
@@ -17,7 +20,13 @@ class ItemRVAdapter (private val itemList: ArrayList<Item>): RecyclerView.Adapte
         return ItemViewHolder(viewBinding)
     }
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(itemList[position])
+        holder.bind(itemList[position % itemList.size])
     }
-    override fun getItemCount(): Int = itemList.size
+    override fun getItemCount(): Int = itemCount
+    fun changeItemCountListSize() {
+        itemCount = itemList.size
+    }
+    fun changeItemCountIntMAX() {
+        itemCount = Int.MAX_VALUE
+    }
 }

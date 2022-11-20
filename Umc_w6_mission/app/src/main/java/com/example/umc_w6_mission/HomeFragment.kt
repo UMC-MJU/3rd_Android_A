@@ -7,17 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.example.umc_w6_mission.databinding.FragmentHomeBinding
-import me.relex.circleindicator.CircleIndicator2
 import java.util.*
 
 
 class HomeFragment : Fragment() {
     private lateinit var viewBinding: FragmentHomeBinding
+    private val itemList: ArrayList<Item> = arrayListOf()
 
     var currentPage = 0
     val handlerThread: HandlerThread by lazy {
@@ -26,19 +22,18 @@ class HomeFragment : Fragment() {
     private lateinit var autoslide:PagerRunnable
     inner class PagerRunnable:Thread() {
         override fun run() {
-//            while(handlerThread.isAlive){
-            while(true) {
-                if(viewBinding.vpHome.currentItem+1 == viewBinding.vpHome.adapter?.itemCount) {
-                    handlerThread.quitSafely()
-                    break
-                    // 마지막까지 가면 다시 처음으로 돌아가기
-//                    viewBinding.vpHome.setCurrentItem(0, true)
+            // 처음부터 전후 스크롤이 가능하게 하기 위해 절반부터 시작
+            currentPage = Int.MAX_VALUE / 2 - kotlin.math.ceil(itemList.size.toDouble() / 2).toInt()
+            viewBinding.vpHome.setCurrentItem(currentPage,false)
+            currentPage+=1
+
+            while(handlerThread.isAlive){
+                while(true) {
+                    Handler(handlerThread.looper).post{
+                        setPage()
+                    }
+                    sleep(2000)
                 }
-                Handler(handlerThread.looper).post{
-                    setPage()
-                }
-                sleep(2000)
-//            }
             }
         }
     }
@@ -58,7 +53,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val itemList: ArrayList<Item> = arrayListOf()
         itemList.apply {
             add(Item(R.drawable.image_1))
             add(Item(R.drawable.image_2))
@@ -67,27 +61,20 @@ class HomeFragment : Fragment() {
             add(Item(R.drawable.image_5))
             add(Item(R.drawable.image_6))
         }
-        val itemRVAdapter = ItemRVAdapter(itemList)
+        val homeVPAdapter = HomeVPAdapter(itemList)
         val viewPager = viewBinding.vpHome
-        viewPager.adapter = itemRVAdapter
-        viewBinding.indicator.setViewPager(viewPager)
+        viewPager.adapter = homeVPAdapter
 
-        // 다른 데로 갔다가 다시 돌아올 때 그 보고 있던 페이지가 유지되었으면 좋겠음
-        // 스레드가 멈춰있는 것보다는 그 포지션을 저장해놔야 하나?
+        // indicator 개수가 무한스크롤을 위해 생성된 item 개수만큼 생성되는 문제
+        // 아래와 같이 하면 indicator가 itemList size만큼 생성은 되지만 selected는 되지 않음
+        // => CircleIndicator3를 상속받은 customView를 만들어서 layout xml에 사용
+        homeVPAdapter.changeItemCountListSize()
+        viewBinding.indicator.setViewPager(viewPager)
+        homeVPAdapter.changeItemCountIntMAX()
+
         handlerThread.start()
         autoslide = PagerRunnable()
         autoslide?.start()
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        // 저장된 포지션부터 페이지 슬라이드 다시 시작
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-//        handlerThread.quitSafely()
-    }
 }
