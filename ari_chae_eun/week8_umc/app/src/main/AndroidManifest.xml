@@ -14,19 +14,22 @@
         android:theme="@style/Theme.Week5_umc"
         tools:targetApi="31">
         <activity
-            android:name="com.example.week8_umc.MemoDesActivity"
+            android:name=".PreferActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.week8_umc.MemoActivity"
+            android:name=".MemoDesActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.week8_umc.RVActivity"
+            android:name=".MemoActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.week8_umc.listViewActivity"
+            android:name=".RVActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.week8_umc.MainActivity"
+            android:name=".listViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

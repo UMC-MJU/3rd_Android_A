@@ -53,5 +53,10 @@ class MemoActivity : AppCompatActivity() {
             }
 
         }
+
+        binding.starBtn.setOnClickListener{
+            val intent = Intent(this, PreferActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

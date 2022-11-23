@@ -9,6 +9,7 @@ import com.example.week8_umc.databinding.ItemDataMemoBinding
 // item 이 들어갈 목록을 파라미터로 넣는다. -> constructor
 // 따로 함수를 만들어주는 복잡성을 줄이기 위해서
 class DataRVAdapterForMemo(private val dataList: ArrayList<Data>, private val roomDB: AppDatabase?): RecyclerView.Adapter<DataRVAdapterForMemo.DataViewHolder>(){
+    constructor(dataList: ArrayList<Data>): this(dataList, null)
 
     // viewHolder 객체
     // viewHolder가 ItemData.xml에 있는 constraintLayout을 가져옴.
@@ -36,7 +37,8 @@ class DataRVAdapterForMemo(private val dataList: ArrayList<Data>, private val ro
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         holder.bind(dataList[position])
         holder.view.delBtn.setOnClickListener{
-            roomDB?.postDao()?.delete(roomDB?.postDao()?.selectByPostId(dataList[position].postIdx))
+            roomDB?.postDao()?.selectByPostId(dataList[position].postIdx)
+                ?.let { it1 -> roomDB?.postDao()?.delete(it1) }
             dataList.removeAt(position)
             notifyDataSetChanged()
         }
