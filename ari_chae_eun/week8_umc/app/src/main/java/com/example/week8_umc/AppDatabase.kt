@@ -5,10 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [Post::class], version = 1)
 abstract class AppDatabase : RoomDatabase(){
 
-    abstract fun userDao() : UserDao // 이렇게만 해줘도 자동으로 데이터 베이스를 가져오게 해준다. 값을 채워준다.
+    abstract fun postDao() : PostDao // 이렇게만 해줘도 자동으로 데이터 베이스를 가져오게 해준다. 값을 채워준다.
     companion object {
         private var appDatabase: AppDatabase ?= null
 
@@ -19,7 +19,7 @@ abstract class AppDatabase : RoomDatabase(){
                     appDatabase = Room.databaseBuilder(
                         context.applicationContext,
                         AppDatabase::class.java,
-                        "app-database"
+                        "week_8"
                         ).allowMainThreadQueries().build()
                 }
             }

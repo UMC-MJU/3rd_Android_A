@@ -2,6 +2,7 @@ package com.example.week8_umc
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -23,24 +24,34 @@ class MemoActivity : AppCompatActivity() {
 
         val roomDB = AppDatabase.getInstance(this)
         if(roomDB != null){
-            val user = User("에릭", 23)
-            roomDB.userDao().insert(user)
-        }
 
-        binding.memoRV.adapter = dataRVAdapter // adapter
-        binding.memoRV.layoutManager = LinearLayoutManager(this)// layoutManager
+            binding.memoRV.adapter = dataRVAdapter // adapter
+            binding.memoRV.layoutManager = LinearLayoutManager(this)// layoutManager
 
-        getResultText = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()){result ->
-            if(result.resultCode == RESULT_OK){
-                dataList.add(Data(result.data?.getStringExtra("title").toString(), result.data?.getStringExtra("des").toString()))
-                dataRVAdapter.notifyItemInserted(dataRVAdapter.itemCount)
+            val postList = roomDB.postDao().selectAll();
+            for(post1 in postList){
+                dataList.add(Data(post1.title, post1.des))
             }
-        }
+            dataRVAdapter.notifyItemInserted(dataRVAdapter.itemCount)
 
-        binding.memoAddBtn.setOnClickListener{
-            val intent = Intent(this, MemoDesActivity::class.java)
-            getResultText.launch(intent)
+            getResultText = registerForActivityResult(
+                ActivityResultContracts.StartActivityForResult()){result ->
+                if(result.resultCode == RESULT_OK){
+                    val title = result.data?.getStringExtra("title").toString()
+                    val des = result.data?.getStringExtra("des").toString()
+                    dataList.add(Data(title, des))
+                    dataRVAdapter.notifyItemInserted(dataRVAdapter.itemCount)
+
+                    val post = Post(title, des)
+                    roomDB.postDao().insert(post)
+                }
+            }
+
+            binding.memoAddBtn.setOnClickListener{
+                val intent = Intent(this, MemoDesActivity::class.java)
+                getResultText.launch(intent)
+            }
+
         }
     }
 }
