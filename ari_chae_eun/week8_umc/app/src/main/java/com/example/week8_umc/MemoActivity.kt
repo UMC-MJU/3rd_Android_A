@@ -10,8 +10,8 @@ import com.example.week8_umc.databinding.ActivityMemoBinding
 
 class MemoActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMemoBinding
-    lateinit var getResultText: ActivityResultLauncher<Intent>
+    private lateinit var binding: ActivityMemoBinding
+    private lateinit var getResultText: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,11 @@ class MemoActivity : AppCompatActivity() {
         val dataList: ArrayList<Data> = arrayListOf()
         val dataRVAdapter = DataRVAdapterForMemo(dataList)
 
-
+        val roomDB = AppDatabase.getInstance(this)
+        if(roomDB != null){
+            val user = User("에릭", 23)
+            roomDB.userDao().insert(user)
+        }
 
         binding.memoRV.adapter = dataRVAdapter // adapter
         binding.memoRV.layoutManager = LinearLayoutManager(this)// layoutManager

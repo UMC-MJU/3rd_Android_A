@@ -17,7 +17,7 @@ interface UserDao {
     fun selectAll() : List<User>
 
     @Query("SELECT * FROM User WHERE userId = :userId")
-    fun selectByUserId(userId: User) : User
+    fun selectByUserId(userId: Int) : User
 
     @Query("SELECT * FROM User WHERE name = :name")
     fun selectByUserName(name: String) : List<User>

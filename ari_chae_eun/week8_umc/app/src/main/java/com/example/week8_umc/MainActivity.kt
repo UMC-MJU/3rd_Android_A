@@ -11,6 +11,9 @@ class MainActivity : AppCompatActivity() {
 
     var businessCardArrayList = ArrayList<BusinessCard>()
 
+
+
+
     // 어댑터 작성한 것을 ListView에 세팅해줘야 함.
     private lateinit var customAdapter:CustomAdapter
     lateinit var binding: ActivityMainBinding
