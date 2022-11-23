@@ -1,8 +1,7 @@
 package com.example.week8_umc
 
-data class Data(
+data class DataforRV(
     val title: String,
     val desc: String, // description
-    val postIdx: Int,
     var isChecked:Boolean = false
 )

@@ -8,13 +8,13 @@ import com.example.week8_umc.databinding.ItemDataBinding
 // recycler view Adapter
 // item 이 들어갈 목록을 파라미터로 넣는다. -> constructor
 // 따로 함수를 만들어주는 복잡성을 줄이기 위해서
-class DataRVAdapter (private val dataList:ArrayList<Data>): RecyclerView.Adapter<DataRVAdapter.DataViewHolder>(){
+class DataRVAdapter (private val dataList:ArrayList<DataforRV>): RecyclerView.Adapter<DataRVAdapter.DataViewHolder>(){
 
     // viewHolder 객체
     // viewHolder가 ItemData.xml에 있는 constraintLayout을 가져옴.
     inner class DataViewHolder(private val viewBinding: ItemDataBinding): RecyclerView.ViewHolder(viewBinding.root){
         // viewHolder가 실행될 때 호출시켜 줄 함수
-        fun bind(data: Data){
+        fun bind(data: DataforRV){
             viewBinding.tvTitle.text = data.title
             viewBinding.tvDesc.text = data.desc
 

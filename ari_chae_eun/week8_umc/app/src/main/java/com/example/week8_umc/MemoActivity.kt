@@ -2,7 +2,6 @@ package com.example.week8_umc
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -14,15 +13,16 @@ class MemoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMemoBinding
     private lateinit var getResultText: ActivityResultLauncher<Intent>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMemoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val dataList: ArrayList<Data> = arrayListOf()
-        val dataRVAdapter = DataRVAdapterForMemo(dataList)
-
         val roomDB = AppDatabase.getInstance(this)
+        val dataList: ArrayList<Data> = arrayListOf()
+        val dataRVAdapter = DataRVAdapterForMemo(dataList, roomDB)
+
+
         if(roomDB != null){
 
             binding.memoRV.adapter = dataRVAdapter // adapter
@@ -30,7 +30,7 @@ class MemoActivity : AppCompatActivity() {
 
             val postList = roomDB.postDao().selectAll();
             for(post1 in postList){
-                dataList.add(Data(post1.title, post1.des))
+                dataList.add(Data(post1.title, post1.des, post1.postId))
             }
             dataRVAdapter.notifyItemInserted(dataRVAdapter.itemCount)
 
@@ -39,10 +39,10 @@ class MemoActivity : AppCompatActivity() {
                 if(result.resultCode == RESULT_OK){
                     val title = result.data?.getStringExtra("title").toString()
                     val des = result.data?.getStringExtra("des").toString()
-                    dataList.add(Data(title, des))
+                    val post = Post(title, des)
+                    dataList.add(Data(title, des, post.postId))
                     dataRVAdapter.notifyItemInserted(dataRVAdapter.itemCount)
 
-                    val post = Post(title, des)
                     roomDB.postDao().insert(post)
                 }
             }
