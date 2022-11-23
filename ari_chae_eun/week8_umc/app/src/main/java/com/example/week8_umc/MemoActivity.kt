@@ -1,15 +1,12 @@
-package com.example.week5_umc
+package com.example.week8_umc
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.week5_umc.databinding.ActivityMemoBinding
+import com.example.week8_umc.databinding.ActivityMemoBinding
 
 class MemoActivity : AppCompatActivity() {
 

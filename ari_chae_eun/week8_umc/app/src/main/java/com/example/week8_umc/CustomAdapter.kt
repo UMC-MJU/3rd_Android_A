@@ -1,12 +1,11 @@
-package com.example.week5_umc
+package com.example.week8_umc
  
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.CompoundButton
-import com.example.week5_umc.databinding.ActivityListViewBinding
+import com.example.week8_umc.databinding.ActivityListViewBinding
 
 class CustomAdapter(context: Context, private val businessCardArrayList: ArrayList<BusinessCard>):BaseAdapter(){
 

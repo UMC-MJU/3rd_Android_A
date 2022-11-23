@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.week5_umc">
+    package="com.example.week8_umc">
 
     <application
         android:allowBackup="true"
@@ -14,19 +14,19 @@
         android:theme="@style/Theme.Week5_umc"
         tools:targetApi="31">
         <activity
-            android:name=".MemoDesActivity"
+            android:name="com.example.week8_umc.MemoDesActivity"
             android:exported="false" />
         <activity
-            android:name=".MemoActivity"
+            android:name="com.example.week8_umc.MemoActivity"
             android:exported="false" />
         <activity
-            android:name=".RVActivity"
+            android:name="com.example.week8_umc.RVActivity"
             android:exported="false" />
         <activity
-            android:name=".listViewActivity"
+            android:name="com.example.week8_umc.listViewActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.week8_umc.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.example.week5_umc
+package com.example.week8_umc
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

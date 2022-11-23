@@ -1,10 +1,10 @@
-package com.example.week5_umc
+package com.example.week8_umc
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.week5_umc.databinding.ActivityRvactivityBinding
+import com.example.week8_umc.databinding.ActivityRvactivityBinding
 
 class RVActivity : AppCompatActivity() {
 

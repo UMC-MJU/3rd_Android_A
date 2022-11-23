@@ -1,10 +1,9 @@
-package com.example.week5_umc
+package com.example.week8_umc
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.week5_umc.databinding.ActivityMemoBinding
-import com.example.week5_umc.databinding.ActivityMemoDesBinding
+import com.example.week8_umc.databinding.ActivityMemoDesBinding
 
 class MemoDesActivity : AppCompatActivity() {
     lateinit var binding: ActivityMemoDesBinding

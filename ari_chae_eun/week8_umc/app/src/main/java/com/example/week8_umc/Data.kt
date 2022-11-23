@@ -1,4 +1,4 @@
-package com.example.week5_umc
+package com.example.week8_umc
 
 data class Data(
     val title: String,
