@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/ari_chae_eun/week8_umc/app/src/main/res/drawable/add.xml" value="0.1235" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/ari_chae_eun/week8_umc/app/src/main/res/layout/activity_memo.xml" value="0.2" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/ari_chae_eun/week8_umc/app/src/main/res/layout/activity_memo_des.xml" value="0.19947916666666668" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/ari_chae_eun/week8_umc/app/src/main/res/layout/activity_prefer.xml" value="0.20408163265306123" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/ari_chae_eun/week8_umc/app/src/main/res/layout/activity_rvactivity.xml" value="0.19947916666666668" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/ari_chae_eun/week8_umc/app/src/main/res/layout/activity_shared.xml" value="0.15353260869565216" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/ari_chae_eun/week8_umc/app/src/main/res/layout/item_data.xml" value="0.19947916666666668" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/ari_chae_eun/week8_umc/app/src/main/res/layout/item_data_memo.xml" value="0.4" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/week5_umc/app/src/main/res/layout/activity_list_view.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/week5_umc/app/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/week5_umc/app/src/main/res/layout/activity_memo.xml" value="0.16" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/week5_umc/app/src/main/res/layout/activity_memo_des.xml" value="0.1" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/week5_umc/app/src/main/res/layout/activity_rvactivity.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/week5_umc/app/src/main/res/layout/item_data.xml" value="0.4" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/week5_umc/app/src/main/res/layout/item_data_memo.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/chaeun/Desktop/Android_A/week5_umc/app/src/main/res/layout/item_dta.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/chaeun/Desktop/umc_3rd_andriod/week5_umc/app/src/main/res/layout/activity_list_view.xml" value="0.17708333333333334" />
+        <entry key="..\:/Users/chaeun/Desktop/umc_3rd_andriod/week5_umc/app/src/main/res/layout/activity_main.xml" value="0.17708333333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
