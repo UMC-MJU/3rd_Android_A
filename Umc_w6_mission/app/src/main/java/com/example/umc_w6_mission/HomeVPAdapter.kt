@@ -23,10 +23,10 @@ class HomeVPAdapter (private val itemList: ArrayList<Item>): RecyclerView.Adapte
         holder.bind(itemList[position % itemList.size])
     }
     override fun getItemCount(): Int = itemCount
-    fun changeItemCountListSize() {
+    fun changeItemCountValToListSize() {
         itemCount = itemList.size
     }
-    fun changeItemCountIntMAX() {
+    fun changeItemCountValToIntMAX() {
         itemCount = Int.MAX_VALUE
     }
 }
