@@ -19,7 +19,9 @@ class HomeFragment : Fragment() {
     private val itemList: ArrayList<Item> = arrayListOf()
 
     private var isScrollIdle: Boolean = true
+    private var isLongTouch: Boolean = false
     private var currentPage = 0
+
     private val handlerThread: HandlerThread by lazy {
         HandlerThread("viewPager auto slide")
     }
@@ -39,10 +41,7 @@ class HomeFragment : Fragment() {
                     }
                     sleep(2000)
                 }
-                else {
-                    sleep(4000)
-                    setPage()
-                }
+                else sleep(4000)
             }
         }
     }
@@ -95,15 +94,23 @@ class HomeFragment : Fragment() {
 
             override fun onPageScrollStateChanged(state: Int) {
                 when(state) {
-                    ViewPager2.SCROLL_STATE_IDLE -> autoSlideStart()
+                    ViewPager2.SCROLL_STATE_IDLE -> if(!isLongTouch) autoSlideStart()
                     ViewPager2.SCROLL_STATE_DRAGGING -> autoSlideStop()
                 }
             }
         })
+        // 스크롤 Idle인 상태랑 화면 계속 누르고만 있을 때랑 겹쳐서 stop이 유지가 안됨
+        // => Boolean 변수 : isLongTouch 사용
         viewPager.setOnTouchListener { v, event ->
             when(event.action) {
-                MotionEvent.ACTION_DOWN -> autoSlideStop()
-                MotionEvent.ACTION_UP -> autoSlideStart()
+                MotionEvent.ACTION_DOWN -> {
+                    isLongTouch = true;
+                    autoSlideStop()
+                }
+                MotionEvent.ACTION_UP -> {
+                    isLongTouch = false;
+                    autoSlideStart()
+                }
             }
             true
         }
